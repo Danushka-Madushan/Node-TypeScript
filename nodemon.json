@@ -1,0 +1,14 @@
+{
+    "watch": [
+        "src"
+    ],
+    "verbose": false,
+    "ext": "ts,json",
+    "ignore": [
+        "node_modules"
+    ],
+    "exec": "ts-node-esm ./src/index.ts",
+    "env": {
+        "NODE_ENV": "development"
+    }
+}
