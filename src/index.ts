@@ -1,5 +1,6 @@
 import express, { Express, NextFunction, Request, Response } from 'express'
 import { DevelopmentLog, ExpressResponse } from './response.js'
+import { ExpressRequest } from './middlewares/express-validate.js'
 
 const app: Express = express()
 
@@ -13,7 +14,13 @@ app.use((req: Request, res: Response, next: NextFunction) => {
     next()
 })
 
+app.use(ExpressRequest)
+
 app.get('/api', async (req: Request, res: Response) => {
+    return ExpressResponse(res, true, 200, 'Success')
+})
+
+app.post('/api/v2/set', async (req: Request, res: Response) => {
     return ExpressResponse(res, true, 200, 'Success')
 })
 
