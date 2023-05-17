@@ -1,8 +1,13 @@
 import express, { Express, NextFunction, Request, Response } from 'express'
 import { DevelopmentLog, ExpressResponse } from './response.js'
 import { ExpressRequest } from './middlewares/express-validate.js'
+import { createServer } from 'http'
+import { Server } from 'socket.io'
+import { WS } from './ws/socket.js'
 
 const app: Express = express()
+const server = createServer(app)
+WS(new Server(server))
 
 interface AddressInfo {
     address: String,
@@ -24,7 +29,7 @@ app.post('/api/v2/set', async (req: Request, res: Response) => {
     return ExpressResponse(res, true, 200, 'Success')
 })
 
-const server = app.listen(process.env.PORT || 8080, () => {
-    const { address, port } = server.address() as AddressInfo
+const sv = server.listen(process.env.PORT || 8080, () => {
+    const { address, port } = sv.address() as AddressInfo
     console.log(`Server is Running in http://${ address }:${ port }`)
 })
