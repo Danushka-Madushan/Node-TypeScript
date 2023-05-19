@@ -7,7 +7,7 @@
     "ignore": [
         "node_modules"
     ],
-    "exec": "ts-node-esm ./src/index.ts",
+    "exec": "ts-node ./src/index.ts",
     "env": {
         "NODE_ENV": "development"
     }
