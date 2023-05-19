@@ -9,6 +9,8 @@ const app: Express = express()
 const server = createServer(app)
 WS(new Server(server))
 
+import Routes from './routes/base-route'
+
 interface AddressInfo {
     address: String,
     port: Number
@@ -21,12 +23,10 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 
 app.use(ExpressRequest)
 
-app.get('/api', async (req: Request, res: Response) => {
-    return ExpressResponse(res, true, 200, 'Success')
-})
+app.use('/api', Routes)
 
-app.post('/api/v2/set', async (req: Request, res: Response) => {
-    return ExpressResponse(res, true, 200, 'Success')
+app.use('*', (req: Request, res: Response) => {
+    return ExpressResponse(res, false, 403, 'Forbidden')
 })
 
 const sv = server.listen(process.env.PORT || 8080, () => {
