@@ -1,9 +1,9 @@
 import express, { Express, NextFunction, Request, Response } from 'express'
-import { DevelopmentLog, ExpressResponse } from './response.js'
-import { ExpressRequest } from './middlewares/express-validate.js'
+import { DevelopmentLog, ExpressResponse } from './response'
+import { ExpressRequest } from './middlewares/express-validate'
 import { createServer } from 'http'
 import { Server } from 'socket.io'
-import { WS } from './ws/socket.js'
+import { WS } from './ws/socket'
 
 const app: Express = express()
 const server = createServer(app)
