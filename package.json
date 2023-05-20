@@ -2,7 +2,7 @@
   "name": "node-typescript",
   "version": "1.0.0",
   "description": "Node Express WebApp using TypeScript",
-  "main": "index.js",
+  "main": "./dist/index.js",
   "scripts": {
     "build": "tsc",
     "dev": "nodemon",
