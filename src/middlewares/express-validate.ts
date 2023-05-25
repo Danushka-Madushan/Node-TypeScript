@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import { ExpressResponse } from '../response';
+import { ExpressResponse } from '../response.js';
 import Joi from 'joi';
 
 const ExpressSchemas = async (req: Request): Promise<object> => {

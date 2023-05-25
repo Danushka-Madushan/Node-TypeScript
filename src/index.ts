@@ -1,15 +1,15 @@
 import express, { Express, NextFunction, Request, Response } from 'express'
-import { DevelopmentLog, ExpressResponse } from './response'
-import { ExpressRequest } from './middlewares/express-validate'
+import { DevelopmentLog, ExpressResponse } from './response.js'
+import { ExpressRequest } from './middlewares/express-validate.js'
 import { createServer } from 'http'
 import { Server } from 'socket.io'
-import { WS } from './ws/socket'
+import { WS } from './ws/socket.js'
 
 const app: Express = express()
 const server = createServer(app)
 WS(new Server(server))
 
-import Routes from './routes/base-route'
+import Routes from './routes/base-route.js'
 
 interface AddressInfo {
     address: String,
@@ -31,5 +31,5 @@ app.use('*', (req: Request, res: Response) => {
 
 const sv = server.listen(process.env.PORT || 8080, () => {
     const { address, port } = sv.address() as AddressInfo
-    console.log(`Server is Running in http://${ address }:${ port }`)
+    console.log(`Server is Running in [${ String(process.env.NODE_ENV).toUpperCase() }] http://${ address }:${ port }`)
 })
