@@ -1,15 +1,15 @@
 import express, { Express, NextFunction, Request, Response } from 'express'
-import { DevelopmentLog, ExpressResponse } from './response'
-import { ExpressRequest } from './middlewares/express-validate'
+import { DevelopmentLog, ExpressResponse } from './response.js'
+import { ExpressRequest } from './middlewares/express-validate.js'
 import { createServer } from 'http'
 import { Server } from 'socket.io'
-import { WS } from './ws/socket'
+import { WS } from './ws/socket.js'
 
 const app: Express = express()
 const server = createServer(app)
 WS(new Server(server))
 
-import Routes from './routes/base-route'
+import Routes from './routes/base-route.js'
 
 interface AddressInfo {
     address: String,
