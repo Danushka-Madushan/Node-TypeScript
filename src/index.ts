@@ -31,5 +31,5 @@ app.use('*', (req: Request, res: Response) => {
 
 const sv = server.listen(process.env.PORT || 8080, () => {
     const { address, port } = sv.address() as AddressInfo
-    console.log(`Server is Running in http://${ address }:${ port }`)
+    console.log(`Server is Running in [${ String(process.env.NODE_ENV).toUpperCase() }] http://${ address }:${ port }`)
 })
