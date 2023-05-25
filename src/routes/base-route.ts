@@ -1,6 +1,6 @@
 import { Router, Request, Response } from 'express';
-import { ExpressResponse } from '../response';
-import { tsFunction } from '../config/config';
+import { ExpressResponse } from '../response.js';
+import { tsFunction } from '../config/config.js';
 
 const app = Router()
 
