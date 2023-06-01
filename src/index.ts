@@ -12,16 +12,18 @@ WS(new Server(server))
 import Routes from './routes/base-route.js'
 
 interface AddressInfo {
-    address: String,
-    port: Number
+    address: string,
+    port: number
 }
+
+app.use(express.json())
+
+app.use(ExpressRequest)
 
 app.use((req: Request, res: Response, next: NextFunction) => {
     DevelopmentLog(req.originalUrl)
     next()
 })
-
-app.use(ExpressRequest)
 
 app.use('/api', Routes)
 
