@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from 'express';
 import { ExpressResponse } from '../response.js';
 import Joi, { ValidationError, ValidationResult } from 'joi';
 
-const ExpressSchemas = async (req: Request): Promise<ValidationResult| boolean> => {
+const ExpressSchemas = async (req: Request): Promise<ValidationResult | boolean> => {
     switch (req.originalUrl) {
         case '/api/v2/set' : {
             return await Joi.object({

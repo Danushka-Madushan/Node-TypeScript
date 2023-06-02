@@ -1,11 +1,11 @@
-import express, { Express, NextFunction, Request, Response } from 'express'
+import express, { Application, NextFunction, Request, Response } from 'express'
 import { DevelopmentLog, ExpressResponse } from './response.js'
 import { ExpressRequest } from './middlewares/express-validate.js'
 import { createServer } from 'http'
 import { Server } from 'socket.io'
 import { WS } from './ws/socket.js'
 
-const app: Express = express()
+const app: Application = express()
 const server = createServer(app)
 WS(new Server(server))
 
