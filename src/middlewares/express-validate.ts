@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import { ExpressResponse } from '../response.js';
+import { ExpressResponse } from '../core/utils/response.js';
 import Joi, { ValidationError, ValidationResult } from 'joi';
 
 const ExpressSchemas = async (req: Request): Promise<ValidationResult | boolean> => {

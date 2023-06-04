@@ -1,5 +1,5 @@
 import { Router, Request, Response } from 'express';
-import { ExpressResponse } from '../response.js';
+import { ExpressResponse } from '../core/utils/response.js';
 
 const app = Router()
 
