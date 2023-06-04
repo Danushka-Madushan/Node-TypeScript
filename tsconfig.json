@@ -11,16 +11,18 @@
 
     "removeComments": true,
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
+    
     "strict": true,
+    "skipLibCheck": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
-    "strictFunctionTypes": true,
     "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "allowUnreachableCode": false,
     "allowUnusedLabels": false,
-    "skipLibCheck": true
+    "strictFunctionTypes": true,
+    "allowUnreachableCode": false,
+    "useUnknownInCatchVariables": true,
+    "noFallthroughCasesInSwitch": true,
+    "forceConsistentCasingInFileNames": true,
   },
   "include": [
     "src/**/*"
