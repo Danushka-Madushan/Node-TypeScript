@@ -4,6 +4,7 @@ import cors from 'cors'
 import { DevelopmentLog } from './core/utils/dev.js'
 import { ExpressRequest } from './middlewares/express-validate.js'
 import { ExpressResponse } from './core/utils/response.js'
+import { PORT } from './config/config.js'
 
 const app: Application = express()
 
@@ -30,7 +31,7 @@ app.use('*', (req: Request, res: Response) => {
     return ExpressResponse(res, false, 403, 'Forbidden')
 })
 
-const server = app.listen(process.env.PORT || 8080, () => {
+const server = app.listen(process.env.PORT || PORT, () => {
     const { address, port } = server.address() as AddressInfo
     console.log(`Server is Running in [${ process.env.NODE_ENV.toUpperCase() }] http://${ address }:${ port }`)
 })

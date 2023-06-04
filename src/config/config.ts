@@ -13,6 +13,8 @@ interface TPerson extends TData {
     age: number
 }
 
+export const PORT = 8080
+
 export const tsFunction = (): TPerson => {
     const Human: TPerson = {
         name: "Alex Murphy",
