@@ -1,4 +1,5 @@
 import express, { Application, NextFunction, Request, Response } from 'express'
+import cors from 'cors'
 import { DevelopmentLog, ExpressResponse } from './response.js'
 import { ExpressRequest } from './middlewares/express-validate.js'
 import { createServer } from 'http'
@@ -16,14 +17,15 @@ interface AddressInfo {
     port: number
 }
 
+app.use(cors())
 app.use(express.json())
-
-app.use(ExpressRequest)
 
 app.use((req: Request, res: Response, next: NextFunction) => {
     DevelopmentLog(req.originalUrl)
     next()
 })
+
+app.use(ExpressRequest)
 
 app.use('/api', Routes)
 
@@ -33,5 +35,5 @@ app.use('*', (req: Request, res: Response) => {
 
 const sv = server.listen(process.env.PORT || 8080, () => {
     const { address, port } = sv.address() as AddressInfo
-    console.log(`Server is Running in [${ String(process.env.NODE_ENV).toUpperCase() }] http://${ address }:${ port }`)
+    console.log(`Server is Running in [${ process.env.NODE_ENV.toUpperCase() }] http://${ address }:${ port }`)
 })
