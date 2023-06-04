@@ -2,7 +2,7 @@ import { Response } from 'express'
 
 type TData = 'Success' | 'Forbidden' | object | Array<object>
 
-interface Res {
+interface TRes {
     status: boolean,
     data: TData
 }
@@ -12,7 +12,7 @@ export const newPromise = async (): Promise<[string]> => {
 }
 
 export const ExpressResponse = (res: Response, status: boolean, code: number, data: TData ): void => {
-    const response: Res = {
+    const response: TRes = {
         status: status,
         data: data
     }
