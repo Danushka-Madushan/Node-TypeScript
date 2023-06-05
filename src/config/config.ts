@@ -1,17 +1,5 @@
 import { config } from 'dotenv';config();
-
-interface TData {
-    name: string,
-    address: {
-        country?: "LK" | "USA"
-        key: string,
-        value: string | boolean
-    }[]
-}
-
-interface TPerson extends TData {
-    age: number
-}
+import { TPerson } from 'config';
 
 export const PORT = 8080
 

@@ -5,15 +5,11 @@ import { DevelopmentLog } from './core/utils/dev.js'
 import { ExpressRequest } from './middlewares/express-validate.js'
 import { ExpressResponse } from './core/utils/response.js'
 import { PORT } from './config/config.js'
+import { AddressInfo } from 'index'
 
 const app: Application = express()
 
 import Routes from './routes/base-route.js'
-
-interface AddressInfo {
-    address: string,
-    port: number
-}
 
 app.use(cors())
 app.use(express.json())

@@ -1,11 +1,5 @@
 import { Response } from 'express'
-
-type TData = 'Success' | 'Forbidden' | object | Array<object>
-
-interface TRes {
-    status: boolean,
-    data: TData
-}
+import { TRes, TData } from 'response'
 
 export const newPromise = async (): Promise<[string]> => {
     return Promise.resolve(['Name'])
