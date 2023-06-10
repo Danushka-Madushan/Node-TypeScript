@@ -4,8 +4,7 @@ import cors from 'cors'
 
 import { DevelopmentLog } from './core/utils/dev.js'
 import { ExpressRequest } from './middlewares/express-validate.js'
-import { PORT } from './config/config.js'
-import { version } from '../package.json'
+import { PORT, VERSION } from './config/config.js'
 import { AddressInfo } from 'index'
 
 import Routes from './routes/base-route.js'
@@ -28,7 +27,7 @@ app.use('/api', Routes)
 app.get('/api', (req: Request, res: Response) => {
     return res.status(200).json({
         status: 'OK',
-        version: version,
+        version: VERSION,
         message: 'server is up and running...'
     })
 })
