@@ -7,7 +7,7 @@ export const newPromise = async (): Promise<[string]> => {
 
 export const ExpressResponse = (res: Response, status: boolean, code: number, data: TData ): void => {
     const response: TRes = {
-        status: status,
+        success: status,
         data: data
     }
     res.status(code).json(response)

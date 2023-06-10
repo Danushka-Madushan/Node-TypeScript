@@ -4,7 +4,7 @@ import { TPerson } from 'config';
 export const PORT = 8080
 
 export const tsFunction = (): TPerson => {
-    const Human: TPerson = {
+    const Human = {
         name: "Alex Murphy",
         address: [
             {
@@ -14,6 +14,6 @@ export const tsFunction = (): TPerson => {
             }
         ],
         age: 12
-    }
+    } satisfies TPerson
     return Human
 }

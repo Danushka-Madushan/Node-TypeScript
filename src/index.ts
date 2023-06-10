@@ -1,4 +1,5 @@
 import express, { Application, NextFunction, Request, Response } from 'express'
+import helmet from 'helmet'
 import cors from 'cors'
 
 import { DevelopmentLog } from './core/utils/dev.js'
@@ -7,10 +8,11 @@ import { ExpressResponse } from './core/utils/response.js'
 import { PORT } from './config/config.js'
 import { AddressInfo } from 'index'
 
-const app: Application = express()
-
 import Routes from './routes/base-route.js'
 
+const app: Application = express()
+
+app.use(helmet())
 app.use(cors())
 app.use(express.json())
 
