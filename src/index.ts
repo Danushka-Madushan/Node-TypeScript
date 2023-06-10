@@ -4,8 +4,8 @@ import cors from 'cors'
 
 import { DevelopmentLog } from './core/utils/dev.js'
 import { ExpressRequest } from './middlewares/express-validate.js'
-import { ExpressResponse } from './core/utils/response.js'
 import { PORT } from './config/config.js'
+import { version } from '../package.json'
 import { AddressInfo } from 'index'
 
 import Routes from './routes/base-route.js'
@@ -25,8 +25,16 @@ app.use(ExpressRequest)
 
 app.use('/api', Routes)
 
+app.get('/api', (req: Request, res: Response) => {
+    return res.status(200).json({
+        status: 'OK',
+        version: version,
+        message: 'server is up and running...'
+    })
+})
+
 app.use('*', (req: Request, res: Response) => {
-    return ExpressResponse(res, false, 403, 'Forbidden')
+    return res.sendStatus(403)
 })
 
 const server = app.listen(process.env.PORT || PORT, () => {
