@@ -1,4 +1,4 @@
-declare module 'base-route' {
+declare module 'routes/base-route' {
     type Data = {
         key: string,
         value: string | object | Array<object>

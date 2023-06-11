@@ -1,7 +1,7 @@
 import { config } from 'dotenv';config();
 import { TPerson } from 'config';
 
-export const vERSION = '1.2.0'
+export const V = '1.20.1'
 
 export const PORT = 8080
 

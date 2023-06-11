@@ -1,7 +1,7 @@
 import { Router, Request, Response } from 'express';
 import { ExpressResponse } from '../core/utils/response.js';
-import { TReq, TParams, TQuery } from 'base-route';
-import { TRes } from 'response';
+import { TReq, TParams, TQuery } from 'routes/base-route';
+import { TRes } from 'utils/response';
 
 const app = Router()
 

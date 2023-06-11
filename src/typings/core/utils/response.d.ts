@@ -1,4 +1,4 @@
-declare module 'response' {
+declare module 'utils/response' {
 
     export type TData = 'Success' | 'Forbidden' | object | Array<object>
 

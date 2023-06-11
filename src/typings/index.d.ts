@@ -1,4 +1,4 @@
-declare module 'index' {
+declare module 'src/index' {
 
     export interface AddressInfo {
         address: string,
