@@ -3,7 +3,7 @@ import helmet from 'helmet'
 import cors from 'cors'
 
 import { DevelopmentLog } from './core/utils/dev.js'
-import { ExpressRequest } from './middlewares/express-validate.js'
+import { ExpressRequest } from './routes/middlewares/express-validate.js'
 import { PORT } from './config/config.js'
 import { AddressInfo } from 'src/index'
 
