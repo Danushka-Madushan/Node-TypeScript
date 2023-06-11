@@ -1,5 +1,5 @@
 import { Response } from 'express'
-import { TRes, TData } from 'response'
+import { TRes, TData } from 'utils/response'
 
 export const ExpressResponse = (res: Response, status: boolean, code: number, data: TData ): void => {
     const response: TRes = {

@@ -6,6 +6,7 @@ declare global {
         interface ProcessEnv {
             NODE_ENV: 'production' | 'development',
             PORT: number,
+            npm_package_version: string
         }
     }
 }
