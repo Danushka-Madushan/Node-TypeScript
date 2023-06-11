@@ -4,8 +4,8 @@ import cors from 'cors'
 
 import { DevelopmentLog } from './core/utils/dev.js'
 import { ExpressRequest } from './routes/middlewares/express-validate.js'
-import { PORT } from './config/config.js'
 import { AddressInfo } from 'src/index'
+import { PORT } from './config/config.js'
 
 import Routes from './routes/base-route.js'
 
