@@ -5,7 +5,7 @@ import { TRes } from 'utils/response';
 
 const app = Router()
 
-app.post('/v2/set', (req: Request, res: Response) => {
+app.post('/post', (req: Request, res: Response) => {
     return ExpressResponse(res, true, 200, 'Success')
 })
 

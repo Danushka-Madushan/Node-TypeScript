@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { ExpressResponse } from '../core/utils/response.js';
-import Joi, { ValidationError, ValidationResult } from 'joi';
+import Joi, { ValidationResult } from 'joi';
 
 const ExpressSchemas = async (req: Request): Promise<ValidationResult | boolean> => {
     switch (req.originalUrl) {
@@ -20,9 +20,12 @@ export const ExpressRequest = async (req: Request, res: Response, next: NextFunc
         await ExpressSchemas(req)
         next()
     } catch (error: unknown) {
-        return ExpressResponse(res, false, 400, {
-            missing: (error as ValidationError).details[0].message.replace(/"/g, ''),
-            message: 'INVALID_PAYLOAD'
-        })
+        if (Joi.isError(error)) {
+            return ExpressResponse(res, false, 400, {
+                missing: error.details[0].message.replace(/"/g, ''),
+                message: 'INVALID_PAYLOAD'
+            })
+        }
+        return ExpressResponse(res, false, 500, 'ERROR')
     }
 }

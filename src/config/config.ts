@@ -3,8 +3,8 @@ import { TPerson } from 'config';
 
 export const PORT = 8080
 
-export const tsFunction = (): TPerson => {
-    const Human = {
+export const SampleFunction = (): TPerson => {
+    return {
         name: "Alex Murphy",
         address: [
             {
@@ -15,5 +15,4 @@ export const tsFunction = (): TPerson => {
         ],
         age: 12
     } satisfies TPerson
-    return Human
 }

@@ -5,7 +5,6 @@ export const ExpressResponse = (res: Response, status: boolean, code: number, da
     const response = {
         success: status,
         data: data
-    } satisfies TRes
-    res.status(code).json(response)
-    return
+    }
+    res.status(code).json(response satisfies TRes)
 }
