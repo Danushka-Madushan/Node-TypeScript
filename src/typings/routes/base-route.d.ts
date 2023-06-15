@@ -4,18 +4,20 @@ declare module 'routes/base-route' {
         value: string | object | Array<object>
     }
 
-    export interface TParams {
-        id: string,
-        city: string
-    }
+    export namespace queryRequest {
+        interface TParams {
+            id: string,
+            city: string
+        }
 
-    export interface TReq {
-        id: string,
-        data: Data
-    }
+        interface TReq {
+            id: string,
+            data: Data
+        }
 
-    export interface TQuery {
-        year?: string,
-        user?: string
+        interface TQuery {
+            year?: string,
+            user?: string
+        }
     }
 }

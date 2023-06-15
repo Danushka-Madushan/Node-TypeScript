@@ -1,5 +1,5 @@
 {
-    "exec": "tsc-watch --onSuccess \"node ./dist/index.js\"",
+    "exec": "tsc-watch --onSuccess \"node -r dotenv/config ./dist/index.js\"",
     "ignore": ["node_modules"],
     "ext": ".ts,.json",
     "env": {

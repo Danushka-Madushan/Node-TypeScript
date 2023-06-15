@@ -5,7 +5,7 @@ import cors from 'cors'
 import { DevelopmentLog } from './core/utils/dev.js'
 import { ExpressRequest } from './routes/middlewares/express-validate.js'
 import { AddressInfo } from 'src/index'
-import { PORT } from './config/config.js'
+import { ENV, PORT } from './config/config.js'
 
 import Routes from './routes/base-route.js'
 
@@ -27,7 +27,7 @@ app.use('/api', Routes)
 app.get('/api', (req: Request, res: Response) => {
     return res.status(200).json({
         status: 'OK',
-        version: process.env.npm_package_version,
+        version: ENV.NPM_VERSION,
         message: 'server is up and running...'
     })
 })
@@ -36,7 +36,7 @@ app.use('*', (req: Request, res: Response) => {
     return res.sendStatus(403)
 })
 
-const server = app.listen(process.env.PORT || PORT, () => {
+const server = app.listen(ENV.PORT || PORT, () => {
     const { address, port } = server.address() as AddressInfo
-    console.log(`Server is Running in [${ process.env.NODE_ENV.toUpperCase() }] http://${ address }:${ port }`)
+    console.log(`Server is Running in [${ ENV.NODE_ENV.toUpperCase() }] http://${ address }:${ port }`)
 })
