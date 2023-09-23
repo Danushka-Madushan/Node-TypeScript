@@ -11,8 +11,5 @@ export const authorization = (req: Request, res: Response, next: NextFunction): 
         next()
     }
 
-    return ExpressResponse(res, false, {
-        status: 403,
-        data: "Forbidden"
-    })
+    return ExpressResponse(res, false, 403, "Forbidden")
 }

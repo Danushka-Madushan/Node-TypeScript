@@ -3,16 +3,18 @@ import { TRes, TData } from 'utils/response'
 
 type ResponseCode = 200 | 400 | 403 | 500;
 
-type ResponseParams <T extends ResponseCode> = T extends 400
-    ? { status: 400, data: { message: string | object } }
-    : { status: T, data: TData };
+type ResponseFunction = <T extends ResponseCode> (res: Response,
+    status: T extends 200 ? true : false,
+    code: T,
+    data: T extends 400 ? { message: string | object } : TData
+) => void
 
 /* Default Response */
-export const ExpressResponse = <T extends ResponseCode> (res: Response, status: boolean, config: ResponseParams<T>): void => {
+export const ExpressResponse: ResponseFunction = (res, status, code, data): void => {
     const response = {
         success: status,
-        data: config.data
+        data: data
     }
 
-    res.status(config.status).json(response satisfies TRes)
+    res.status(code).json(response satisfies TRes)
 }
