@@ -5,9 +5,14 @@ export const authorization = (req: Request, res: Response, next: NextFunction): 
     const { headers: { authorization } } = req
 
     if (authorization) {
-        req.auth = authorization
+        req.auth = {
+            auth: "Auth String"
+        }
         next()
     }
 
-    return ExpressResponse(res, false, 403, 'Forbidden')
+    return ExpressResponse(res, false, {
+        status: 403,
+        data: "Forbidden"
+    })
 }

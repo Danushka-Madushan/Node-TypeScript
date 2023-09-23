@@ -1,10 +1,18 @@
 import { Response } from 'express'
 import { TRes, TData } from 'utils/response'
 
-export const ExpressResponse = (res: Response, status: boolean, code: number, data: TData ): void => {
+type ResponseCode = 200 | 400 | 403 | 500;
+
+type ResponseParams <T extends ResponseCode> = T extends 400
+    ? { status: 400, data: { message: string | object } }
+    : { status: T, data: TData };
+
+/* Default Response */
+export const ExpressResponse = <T extends ResponseCode> (res: Response, status: boolean, config: ResponseParams<T>): void => {
     const response = {
         success: status,
-        data: data
+        data: config.data
     }
-    res.status(code).json(response satisfies TRes)
+
+    res.status(config.status).json(response satisfies TRes)
 }
