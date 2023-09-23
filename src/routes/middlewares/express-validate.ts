@@ -21,11 +21,16 @@ export const ExpressRequest = async (req: Request, res: Response, next: NextFunc
         next()
     } catch (error: unknown) {
         if (Joi.isError(error)) {
-            return ExpressResponse(res, false, 400, {
-                missing: error.details[0].message.replace(/"/g, ''),
-                message: 'INVALID_PAYLOAD'
+            return ExpressResponse(res, false, {
+                status: 400,
+                data: {
+                    message: error.details[0].message.replace(/"/g, '')
+                }
             })
         }
-        return ExpressResponse(res, false, 500, 'ERROR')
+        return ExpressResponse(res, false, {
+            status: 500,
+            data: "ERROR"
+        })
     }
 }
