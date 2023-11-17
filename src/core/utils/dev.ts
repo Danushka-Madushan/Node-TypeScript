@@ -1,12 +1,13 @@
+import { log } from 'console'
 import { ENV } from '../../config/config.js'
 
 /* Development Log (Only works Under development ENV) */
-export const DevelopmentLog = (log: string, ignore: boolean = false): void => {
+export const DevelopmentLog = (logs: string, ignore = false): void => {
     if (ignore) {
-        console.log(log)
+        log(logs)
         return
     }
     if (ENV.NODE_ENV === 'development') {
-        console.log(log)
+        log(logs)
     }
 }
