@@ -2,20 +2,29 @@ import { NextFunction, Request, Response } from 'express';
 import { ExpressResponse } from '../../core/utils/response.js';
 import Joi, { ValidationResult } from 'joi';
 
-const ExpressSchemas = async (req: Request): Promise<ValidationResult | boolean> => {
-    switch (req.originalUrl) {
-        case '/api/v2/set' : {
-            return await Joi.object({
-                id: Joi.string().required()
-            }).validateAsync(req.body) as ValidationResult
+const RequestCase = (originalUrl: string, method: string) => {
+    return `[${ method }]-${ originalUrl }` as const
+}
+
+/* Request body validation schema */
+const ExpressSchemas = async ({ originalUrl, method, body }: Request<object, object, object>): Promise<ValidationResult | boolean> => {
+    /* Joi Schema Function */
+    const ObjectSchema = async <T extends Record<string, Joi.Schema | object>>(schema: T, allowunknown = false) => {
+        return await Joi.object(schema).unknown(allowunknown).validateAsync(body) as ValidationResult
+    }
+    
+    switch (RequestCase(originalUrl, method)) {
+        case '[POST]-/api/': {
+            return await ObjectSchema({})
         }
+
         default: {
             return true
         }
     }
 }
 
-export const ExpressRequest = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+export const ExpressRequest = async (req: Request<object, object, object>, res: Response, next: NextFunction): Promise<void> => {
     try {
         await ExpressSchemas(req)
         next()
