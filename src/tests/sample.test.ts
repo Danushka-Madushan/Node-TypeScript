@@ -4,7 +4,7 @@ import { app } from '../index.js';
 
 const RouteConfig = {
 	base: {
-        name: 'Base Route',
+        name: 'api',
         route: '/api'
     },
 }
