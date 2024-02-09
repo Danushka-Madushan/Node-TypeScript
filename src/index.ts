@@ -14,7 +14,7 @@ import Routes from './routes/base-route.js'
 import { ExpressResponse } from './core/utils/response.js'
 import { AppEvents } from './core/services/emitter.js'
 
-const app: Application = express()
+export const app: Application = express()
 
 app.use(helmet())
 app.use(cors())
