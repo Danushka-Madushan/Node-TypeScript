@@ -7,7 +7,7 @@
   "scripts": {
     "build": "tsc",
     "dev": "nodemon",
-    "test": "vitest",
+    "test": "vitest --run --config ./src/tests/vitest.config.ts",
     "start": "node ./dist/index.js",
     "lint": "eslint \"./src/**/*.ts\" --ignore-pattern node_modules/ --config .eslintrc.json --fix --cache",
     "postinstall": "npm run build"
